@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACE Eco Pot | Đất nặn và keo dán từ tinh bột khoai tây</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;600;700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:#4c9e63;
+      --mint:#8cd3b0;
+      --dark:#16311c;
+      --sand:#f8f1df;
+      --accent:#ffb347;
+      --bg:#f5fbf6;
+    }
+    * {box-sizing: border-box;}
+    body {
+      margin:0;
+      font-family:'Inter', system-ui, -apple-system, sans-serif;
+      background:var(--bg);
+      color:#103118;
+      line-height:1.6;
+    }
+    header {
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(245,251,246,0.85);
+      border-bottom:1px solid #dcefe0;
+    }
+    .container {width: min(1100px, 94%); margin:0 auto;}
+    nav {display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+    nav .brand {display:flex; align-items:center; gap:12px; font-family:'Baloo 2', cursive; font-size:22px; color:var(--dark);} 
+    nav img {width:52px; height:52px;}
+    nav .actions {display:flex; gap:12px; align-items:center;}
+    .btn {display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; border-radius:999px; font-weight:700; text-decoration:none; transition:transform .2s, box-shadow .2s;}
+    .btn-primary {background:linear-gradient(135deg, var(--green), #6ac08c); color:white; box-shadow:0 10px 30px rgba(76,158,99,.25);} 
+    .btn-secondary {border:1px solid #cde7d3; color:var(--dark); background:white;}
+    .btn:hover {transform:translateY(-2px);}
+
+    .hero {display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:30px; align-items:center; padding:60px 0 40px;}
+    .hero-left {display:flex; flex-direction:column; gap:16px;}
+    .eyebrow {display:inline-flex; align-items:center; gap:10px; padding:6px 14px; background:#e7f5eb; border-radius:999px; color:var(--green); font-weight:700; width:max-content;}
+    h1 {font-family:'Baloo 2', cursive; font-size:44px; margin:6px 0; line-height:1.15; color:var(--dark);} 
+    .highlight {color:var(--green);} 
+    .lead {font-size:18px; color:#2b4331; margin:0;}
+    .hero-cta {display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:10px;}
+    .pill {display:flex; align-items:center; gap:8px; padding:10px 14px; background:#fff; border:1px solid #dcefe0; border-radius:14px; box-shadow:0 6px 18px rgba(16,49,24,0.06);} 
+
+    .hero-card {position:relative; background:white; border-radius:24px; padding:24px; box-shadow:0 20px 60px rgba(9,40,20,0.12); overflow:hidden;} 
+    .hero-card::before {content:""; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(255,179,71,.18), transparent 40%), radial-gradient(circle at 80% 80%, rgba(140,211,176,.18), transparent 42%);} 
+    .hero-card img {width:180px; height:auto; display:block; margin:0 auto 14px; filter:drop-shadow(0 12px 20px rgba(0,0,0,0.08));}
+    .badge {position:absolute; top:18px; right:18px; background:#fff; border:1px solid #dcefe0; padding:8px 12px; border-radius:12px; font-weight:700; color:var(--green);}
+    .hero-grid {display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .mini-card {background:rgba(76,158,99,0.06); border:1px solid #dcefe0; border-radius:14px; padding:12px; font-weight:700;}
+
+    .section {padding:50px 0;}
+    .section h2 {font-family:'Baloo 2', cursive; font-size:32px; margin:0 0 8px; color:var(--dark);} 
+    .section p.section-lead {max-width:720px; margin:0 0 24px; color:#2d4b35;}
+    .features {display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:18px;}
+    .feature {background:white; border-radius:18px; padding:18px; border:1px solid #dcefe0; box-shadow:0 6px 30px rgba(9,40,20,0.06);} 
+    .feature .icon {width:42px; height:42px; border-radius:12px; background:#e7f5eb; display:grid; place-items:center; font-size:20px; color:var(--green);} 
+    .products {display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px;}
+    .product {background:white; border-radius:20px; padding:18px; border:1px solid #dcefe0; box-shadow:0 10px 40px rgba(9,40,20,0.08);} 
+    .product h3 {margin:6px 0 8px; font-size:22px;}
+    .tag {display:inline-flex; align-items:center; gap:6px; padding:6px 10px; background:#e7f5eb; color:var(--green); border-radius:10px; font-weight:700;}
+    .stats {display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px; margin-top:14px;}
+    .stat {background:#103118; color:white; border-radius:16px; padding:14px 16px;}
+    .stat strong {display:block; font-size:26px;}
+    .testimonial {background:#fff; border:1px solid #dcefe0; border-radius:18px; padding:18px; box-shadow:0 6px 30px rgba(9,40,20,0.06);} 
+    .cta {text-align:center; padding:46px; background:linear-gradient(135deg, rgba(76,158,99,.08), rgba(255,179,71,.12)); border-radius:22px; border:1px solid #dcefe0;}
+    footer {padding:24px 0 40px; text-align:center; color:#4e6957; font-size:14px;}
+
+    @media (max-width: 700px) {
+      h1 {font-size:36px;}
+      .hero {padding-top:40px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <img src="assets/logo.svg" alt="ACE Eco Pot logo">
+          <span>ACE Eco Pot</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-secondary" href="#products">Sản phẩm</a>
+          <a class="btn btn-primary" href="mailto:hello@ace-eco.vn">Đặt hàng ngay</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <span class="eyebrow">🌱 Đất nặn & keo dán tinh bột khoai tây</span>
+        <h1>Bé chơi an toàn, mẹ yên tâm với <span class="highlight">nguyên liệu tự nhiên</span></h1>
+        <p class="lead">ACE Eco Pot mang tới bộ đôi đất nặn và keo dán làm từ tinh bột khoai tây, không hại da tay, không mùi hóa chất, phân hủy sinh học và thân thiện với môi trường.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:hello@ace-eco.vn">Nhận bảng giá</a>
+          <a class="btn btn-secondary" href="#features">Xem lợi ích</a>
+        </div>
+        <div class="hero-cta">
+          <div class="pill">✅ An toàn cho trẻ nhỏ</div>
+          <div class="pill">🌾 100% nguyên liệu thực vật</div>
+          <div class="pill">♻️ Bao bì tái chế</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="badge">Logo ACE</div>
+        <img src="assets/logo.svg" alt="Logo ACE Eco Pot">
+        <div class="hero-grid">
+          <div class="mini-card">Đất nặn khoai tây mềm mịn</div>
+          <div class="mini-card">Keo dán tinh bột an toàn</div>
+          <div class="mini-card">Không phẩm màu độc hại</div>
+          <div class="mini-card">Đóng gói thân thiện môi trường</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Lý do phụ huynh chọn ACE Eco Pot</h2>
+      <p class="section-lead">Thiết kế cho trẻ em Việt Nam, đất nặn và keo dán ACE sử dụng tinh bột khoai tây làm nền, kết hợp màu thực phẩm và hương nhẹ tự nhiên, đảm bảo giờ chơi sáng tạo luôn lành mạnh.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🛡️</div>
+          <h3>An toàn cho da</h3>
+          <p>Không chứa BPA, paraben, formaldehyde hay dung môi; dịu nhẹ cho cả da nhạy cảm.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🥔</div>
+          <h3>Nền khoai tây nguyên chất</h3>
+          <p>Kết cấu mềm mịn, không bết dính; dễ rửa sạch bằng nước ấm.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🌿</div>
+          <h3>Phân hủy sinh học</h3>
+          <p>Thành phần thực vật giúp giảm rác thải nhựa, bao bì giấy tái chế.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🎨</div>
+          <h3>Màu thực phẩm</h3>
+          <p>Màu sắc tươi sáng, an toàn nếu bé vô tình chạm lên miệng.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h2>Sản phẩm nổi bật</h2>
+      <div class="products">
+        <article class="product">
+          <div class="tag">Đất nặn khoai tây</div>
+          <h3>Bộ 6 màu ACE Soft Clay</h3>
+          <p>Chất đất mịn, đàn hồi, không dính tay, giúp bé dễ dàng nhào nặn hình khối và phát triển cảm giác xúc giác.</p>
+          <ul>
+            <li>Tinh bột khoai tây + glycerin thực vật</li>
+            <li>Màu thực phẩm, hương nhẹ tự nhiên</li>
+            <li>Hộp giấy tái chế, túi zip chống khô</li>
+          </ul>
+          <div class="stats">
+            <div class="stat"><strong>6</strong>Màu cơ bản</div>
+            <div class="stat"><strong>0%</strong>Chất bảo quản độc hại</div>
+          </div>
+        </article>
+        <article class="product">
+          <div class="tag">Keo dán tinh bột</div>
+          <h3>ACE Friendly Glue</h3>
+          <p>Keo dán base tinh bột khoai tây, độ bám ổn định, mùi dễ chịu, phù hợp cho giấy thủ công & vật liệu nhẹ.</p>
+          <ul>
+            <li>Không chứa formaldehyde hay dung môi</li>
+            <li>Dễ rửa sạch, không để lại mùi khó chịu</li>
+            <li>Dạng tuýp hoặc hũ, nắp khóa an toàn</li>
+          </ul>
+          <div class="stats">
+            <div class="stat"><strong>3</strong>Dung tích (30ml, 60ml, 120ml)</div>
+            <div class="stat"><strong>99%</strong>Thành phần từ thực vật</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Trải nghiệm thực tế</h2>
+      <div class="features">
+        <div class="testimonial">
+          <p>“Con mình 3 tuổi, lần đầu dùng keo mà không cay mắt hay mùi hắc. Đất nặn mềm, dễ gom lại, không bị vụn ra sàn nhà.”</p>
+          <strong>- Chị Hương, Hà Nội</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Lớp mẫu giáo của tôi chọn ACE vì bảng thành phần rõ ràng, trẻ nào cũng thích mùi khoai tây nhẹ nhẹ.”</p>
+          <strong>- Cô Linh, giáo viên mầm non</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Bao bì giấy tái chế rất phù hợp với tinh thần eco. Giá tốt cho trường học đặt số lượng.”</p>
+          <strong>- Anh Minh, chủ CLB thủ công</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <h2>Sẵn sàng cho giờ chơi xanh?</h2>
+      <p class="section-lead" style="margin:auto">Nhắn ACE Eco Pot để nhận bảng giá ưu đãi cho trường học, trung tâm hoặc đặt lẻ cho gia đình.</p>
+      <div class="hero-cta" style="justify-content:center; margin-top:18px;">
+        <a class="btn btn-primary" href="mailto:hello@ace-eco.vn">Liên hệ ngay</a>
+        <a class="btn btn-secondary" href="tel:+84987654321">Gọi 0987 654 321</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      ACE Eco Pot © 2024 · Đất nặn & keo dán tinh bột khoai tây an toàn cho trẻ em Việt Nam.
+    </div>
+  </footer>
+</body>
+</html>
